@@ -41,11 +41,11 @@
         <div class="navbar-item" @mouseenter="showDropdown = true" @mouseleave="showDropdown = false">
           <div class="navbar-item">Каталог товаров</div>
           <ul v-show="showDropdown" class="dropdown">
-                <li><router-link to="/products/category/grobi/" class="navbar-item">Гробы</router-link></li>
-                <li><router-link to="/about" class="navbar-item">Венки</router-link></li>
-                <li><router-link to="/about" class="navbar-item">Кресты</router-link></li>
-                <li><router-link to="/about" class="navbar-item">Композиции</router-link></li>
-                <li><router-link to="/about" class="navbar-item">Корзины</router-link></li>
+                <li><router-link to="/grobi" class="navbar-item">Гробы</router-link></li>
+                <li><router-link to="/venki" class="navbar-item">Венки</router-link></li>
+                <li><router-link to="/kresti" class="navbar-item">Кресты</router-link></li>
+                <li><router-link to="/kompositii" class="navbar-item">Композиции</router-link></li>
+                <li><router-link to="/karzini" class="navbar-item">Корзины</router-link></li>
           </ul>
         </div>
         <!-- search -->

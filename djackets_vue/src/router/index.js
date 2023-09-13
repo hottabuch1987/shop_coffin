@@ -6,8 +6,8 @@ import LogIn from '../views/LogIn.vue'
 import MyAccount from '../views/MyAccount.vue'
 import Success from '../views/Success.vue'
 import AuthCode from '../views/AuthCode.vue'
-
-
+import Category from '../views/Category.vue'
+import Product from '../views/Product.vue'
 
 
 
@@ -55,6 +55,17 @@ const routes = [
     path: '/success',
     name: 'Success',
     component: Success
+  },
+
+  {
+    path: '/:category_slug/:product_slug',
+    name: 'Product',
+    component: Product
+  },
+  {
+    path: '/:category_slug',
+    name: 'Category',
+    component: Category
   },
   
 ]
