@@ -8,6 +8,7 @@ import Success from '../views/Success.vue'
 import AuthCode from '../views/AuthCode.vue'
 import Category from '../views/Category.vue'
 import Product from '../views/Product.vue'
+import Document from '../views/Document.vue'
 
 
 
@@ -55,6 +56,11 @@ const routes = [
     path: '/success',
     name: 'Success',
     component: Success
+  },
+  {
+    path: '/document',
+    name: 'Document',
+    component: Document
   },
 
   {

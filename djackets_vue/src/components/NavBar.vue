@@ -30,7 +30,7 @@
           <div class="navbar-item">Ритуальные услуги</div>
 
             <ul v-show="showDropdown" class="dropdown">
-              <li><router-link to="/about" class="navbar-item">Документы</router-link></li>
+              <li><router-link to="/document" class="navbar-item">Документы</router-link></li>
               <li><router-link to="/about" class="navbar-item">Место на кладбище</router-link></li>
               <li><router-link to="/about" class="navbar-item">Кремация</router-link></li>
               <li><router-link to="/about" class="navbar-item">Льготы и пособия</router-link></li>
