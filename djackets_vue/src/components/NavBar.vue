@@ -51,10 +51,10 @@
         <!-- search -->
          
         <div class="navbar-item is-small">
-          <form method="get" action="/about">
+          <form method="get" action="/search">
             <div class="field has-addons">
               <div class="control">
-                <input type="text" class="input"  name="query">
+                <input type="text" class="input" placeholder="Что Вы ищете?" name="query">
               </div>
 
               <div class="control">
@@ -64,6 +64,10 @@
                   </span>
                 </button>
               </div>
+            <router-link to="/cart" class="button is-success">
+              <span class="icon"><i class="fas fa-shopping-cart"></i></span>
+              <span> {{ cartTotalLength }}</span>
+            </router-link>
             </div>
           </form>
         </div>
@@ -91,16 +95,29 @@
   </nav>
 </template>
 <script>
-import axios from 'axios'
-
-
 
 export default {
 
   data(){
     return{
       showDropdown: false,
+      cart: {
+        items: []
+      }
     
+    }
+  },
+  mounted(){
+    this.cart = this.$store.state.cart
+  },
+  computed: {
+    cartTotalLength(){
+      let totalLength = 0
+      
+      for (let i = 0; i < this.cart.items.length; i++) {
+        totalLength += this.cart.items[i].quantity
+      }
+      return totalLength
     }
   },
 

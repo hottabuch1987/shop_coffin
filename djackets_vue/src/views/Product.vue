@@ -5,18 +5,16 @@
               <figure class="image mb-6">
                   <img :src="product.get_image">
               </figure>
-              <h1 class="title">Телефон {{ product.name }}</h1>
+              <h1 class="title"> {{ product.name }}</h1>
               <p>{{ product.description }}</p>
           </div>
           <div class="column is-3">
-              <h2 clas="subtitle">Описание</h2>
-              <p><strong>Цена: </strong> {{ product.name }}</p>
-          <div class="field has-addons mt-6">
-             
-          <div class="control">
-           
-          </div>
-          </div>
+              <p><strong>Название: </strong> {{ product.name }}</p>
+              <p><strong>Цена: </strong> {{ product.price }} ₽</p>
+                <div class="column is-2">
+                    <a class="button is-dark" @click="addToCart">Добавить в корзину</a>
+                </div>
+          
           </div>
       </div>
   </div>
@@ -24,6 +22,7 @@
 
 <script>
 import axios from 'axios'
+import { toast } from 'bulma-toast'
 
 export default {
     name: 'Product',
@@ -55,6 +54,23 @@ export default {
                 })
             this.$store.commit('setIsLoading', false)
         },
+        addToCart() {
+            if(isNaN(this.quantity) || this.quantity < 1) {
+                this.quantity = 1
+            }
+            const item = {
+                product: this.product,
+                quantity: this.quantity
+            }
+            this.$store.commit('addToCart', item)
+            toast ({
+                message: 'Товар добавлен в корзину!',
+                type: 'is-success',
+                dismissible: true,
+                pauseOnHover: 2000,
+                position: 'bottom-right'
+            })
+        }
      
     }
 }

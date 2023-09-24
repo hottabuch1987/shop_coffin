@@ -3,7 +3,7 @@
     <div class="columns">
       <div class="column"> 
         <div class="heading--primary">
-          <h2 class="title">Документы для умершего</h2>
+          <h2 class="title">Документы</h2>
           <p>Фамилия <span>{{ famyli }}</span></p>
           <p>Имя <span>{{ name }}</span></p>
           <p>Отчество <span>{{ surname }}</span></p>
@@ -22,9 +22,9 @@
       </div>
       <div class="column">
        <div class="deads" v-for="deadUser in deadUsers" :key="deadUser.id">
-            <p><span>{{deadUser.famyli}}</span></p>
-            <p><span>{{ deadUser.name }}</span></p>
-            <p><span>{{deadUser.surname }}</span></p>
+            {{deadUser.famyli}}
+            {{ deadUser.name }}
+            {{deadUser.surname }}
         </div>
       </div>
     </div>
@@ -46,7 +46,7 @@ export default {
     }
   },
   mounted() {
-    document.title = 'Документы для покойников'
+    document.title = 'Документы'
     this.getDead() // Вызов функции для получения данных при загрузке страницы
   },
   methods: {
@@ -66,7 +66,10 @@ export default {
           pauseOnHover: 2000,
           position: 'bottom-right'
         })
-        this.getDead() // Вызов функции для обновления данных после успешного сохранения
+        this.getDead()
+        this.famyli = ''
+        this.name = ''
+        this.surname = ''
       } catch (error) {
         console.log('error', error)
       } finally {
@@ -101,11 +104,6 @@ export default {
     margin-top: 20px;
 }
 
-.column {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 .title {
     display: flex;
     justify-content: center;
@@ -149,11 +147,16 @@ input[type="text"] {
     border-radius: 5px;
     margin-bottom: 20px;
 }
+.deads {
+    margin: 10px;
+    background-color: rgb(226, 226, 223);
+}
 
 p {
     color: rgb(165, 167, 167);
     font-size: 18px;
     margin-bottom: 5px;
+    background-color: rgb(207, 207, 207);
 }
 
 span {

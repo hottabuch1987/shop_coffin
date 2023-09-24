@@ -9,6 +9,8 @@ import AuthCode from '../views/AuthCode.vue'
 import Category from '../views/Category.vue'
 import Product from '../views/Product.vue'
 import Document from '../views/Document.vue'
+import Search from '../views/Search.vue'
+import Cart from '../views/Cart.vue'
 
 
 
@@ -50,7 +52,16 @@ const routes = [
       requireLogin: true
     }
   },
-
+  {
+    path: '/search',
+    name: 'Search',
+    component: Search
+  },
+  {
+    path: '/cart',
+    name: 'Cart',
+    component: Cart
+  },
   
   {
     path: '/success',

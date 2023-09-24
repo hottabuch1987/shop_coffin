@@ -7,7 +7,7 @@ from rest_framework.decorators import api_view
 
 from .models import Product, Category
 from .serializers import ProductSerializer, CategorySerializer
-from rest_framework import viewsets
+
 
 
 class LatestProductsList(APIView):
