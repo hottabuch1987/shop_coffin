@@ -3,8 +3,14 @@
 <nav class="navbar is-dark is-fixed-top">
   <div class="navbar-brand">
     <router-link to="/" class="navbar-item"><strong>Главная</strong></router-link>
-    <router-link to="/document" class="navbar-item"><strong>Документы</strong></router-link>
-    <router-link to="/" class="navbar-item"><strong>Главная</strong></router-link>
+    
+    <router-link to="/grobi" class="navbar-item"><strong> Гробы</strong></router-link>
+    <router-link to="/venki" class="navbar-item"><strong> Венки</strong></router-link>
+    <router-link to="/kompositii" class="navbar-item"><strong> Композиции</strong></router-link>
+     <router-link to="/karzini" class="navbar-item"><strong> Корзины</strong></router-link>
+     <router-link to="/kresti" class="navbar-item"><strong> Кресты</strong></router-link>
+
+    
       <a class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu" @click="showMobileMenu = !showMobileMenu">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
@@ -37,7 +43,7 @@
       </div>
     <!-- //search -->
       <div class="navbar-end">
-        <router-link to="/" class="navbar-item">Товары</router-link>
+        <router-link to="/document" class="navbar-item"><strong>Документы</strong></router-link>
     <!-- my-account -->
       <div class="navbar-item">
         <div class="buttons">
