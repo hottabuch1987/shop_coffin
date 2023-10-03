@@ -1,5 +1,5 @@
 <template>
-    <div class="page-my-account">
+      <div class="page-category">
         <div class="columns is-multiline" >
             <div class="column is-12">
                 <h1 class="title">Мой аккаунт</h1>
@@ -67,3 +67,8 @@ export default {
     },
 }
 </script>
+<style scoped>
+.columns {
+    margin-top: 20px;
+}
+</style>
