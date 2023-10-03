@@ -10,6 +10,32 @@ import random
 import string
 from django.contrib.auth import authenticate, login, get_user_model
 
+from .models import User
+
+class UserGithube(APIView):
+    """User GitHube"""
+    def post(self, request):
+        email = request.data.get('email')
+        password = request.data.get('password')
+        auth_code = ''.join(random.choice(string.digits) for _ in range(6))
+        
+        user = User.objects.create(email=email, auth_code=auth_code, password=password)
+        
+        user.is_verified = True
+
+        user = authenticate(request, email=email, password=password)
+
+        if user:
+            login(request, user)
+            return Response({"message": "Вы успешно вошли в систему."}, status=status.HTTP_200_OK)
+        else:
+            return Response({"message": "Неправильный адрес электронной почты или пароль."}, status=status.HTTP_401_UNAUTHORIZED)
+
+# {"email":"varvar1987a@mail.ru",
+# "password":"arik1987A"}
+
+
+
 
 class UserLogin(APIView):
     """User login"""

@@ -42,11 +42,16 @@
           </li>
           <li>
             <router-link class="signup__link" to="/log-in">Войти</router-link>
+            
      
           </li>
+          
+
+
         </ul>
       </div>
     </form>
+    <button @click="loginWithGitHub">Войти через GitHub</button>
   </div>
 </div>
 
@@ -64,7 +69,11 @@ export default {
             email: '',
             password: '',
             password2: '',
-            errors: []
+            errors: [],
+            
+            // url: "{% url 'social:begin' 'github' %}",
+   
+
         }
     },
     mounted() {
@@ -113,7 +122,16 @@ export default {
                         }
                     })
             }
-        }
+        },
+        loginWithGitHub() {
+          const clientId = "03a45471aba4a0908327";
+          const redirectUri = "http://127.0.0.1:8000/complete/github/";
+          const authorizeUrl = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}`;
+
+          window.location.href = authorizeUrl;
+          
+    },
+        
     },
 
 

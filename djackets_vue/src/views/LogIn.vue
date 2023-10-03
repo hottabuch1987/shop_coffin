@@ -44,15 +44,19 @@
             <router-link class="signup__link" to="/sing-up">Регистрация</router-link>
      
           </li>
+         
         </ul>
       </div>
     </form>
+    <button @click="loginVK">Войти через ВКонтакте</button>
+
   </div>
 </div>
 
 </template>
 <script>
 import axios from 'axios'
+
 export default {
     name:"LogIn",
     data() {
@@ -79,7 +83,8 @@ export default {
             await axios
                 .post('api/auth/login/', formData)
                 .then(response => {
-                    const auth_code = response.data.auth_token
+                    const auth_code = response.data.auth_token 
+                    // auth_code
 
                     this.$store.commit('setToken', auth_code)
 
@@ -104,8 +109,35 @@ export default {
                     
                     }
                 })    
-        }
-    },
+        },
+        // loginVK() {
+        //   axios.post('/auth/authorize/')
+        //       .then(response => {
+        //         window.location.href = response.data.redirect;
+                
+        //       })
+        //       .catch(error => {
+        //         console.log(error);
+        //       });
+        // }
+        loginVK() {
+            axios.post('/auth/login/', {
+              params: {
+                client_id: '51761062', // Замените на ваш Client ID
+                redirect_uri: 'http://localhost:8080', // Замените на ваш Redirect URI        
+              }
+            })
+            .then(response => {
+              // Обработайте ответ от сервера ВКонтакте
+              console.log(response);
+            })
+            .catch(error => {
+              // Обработайте ошибки
+              console.log(error);
+            });
+          }
+
+    }
 
 }
 </script>
