@@ -37,7 +37,28 @@
 
                 <hr>
 
-                <router-link to="/about" class="button is-dark">Перейти к оформлению заказа</router-link>
+                <router-link to="/order" class="button is-dark">Перейти к оформлению заказа(cтраница)</router-link>
+                <div>
+                      <button class="button is-dark mt-3" @click="showModal = true">Перейти к оформлению заказа(модалка)</button>
+                       <div v-if="showModal" class="modal" @click.self="showModal = false">
+                               <div class="modal-content">
+                                
+                       <span class="close" @click="showModal = false">&times;</span>
+                       <form class="modal-form">
+                        <h2 class="modal-subtitle">Оформление Вашего заказа</h2>
+                        <label class="modal-label">Имя</label>
+                        <input class="form-input" type="text" placeholder="Введите Ваше имя">
+                        <label class="modal-label">Адрес электронной почты</label>
+                        <input class="form-input" type="email" placeholder="Введите Ваш email">
+                        <label class="modal-label">Телефон</label>
+                        <input class="form-input" type="text" placeholder="+7 (000) 000-00-00">
+                        <label class="modal-label">Адрес доставки</label>
+                        <input class="form-input" type="textarea" placeholder="Город, улица, дом">
+                        <button class="button is-dark mt-3">Отправить</button>
+                       </form>
+                               </div>
+                       </div>
+               </div>
             </div>
         </div>
     </div>
@@ -53,6 +74,7 @@ export default {
     },
     data() {
         return {
+            showModal: false,
             cart: {
                 items: []
             }
@@ -83,3 +105,61 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+
+/* Стили для модального окна */
+.modal {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.modal-form {
+    display: flex;
+    flex-direction: column;
+}
+.modal-content {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: space-between;
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+.modal-subtitle {
+    font-size: 40px;
+    color: #7d7c7c;
+}
+
+.modal-label {
+    font-size: 20px;
+    color: #888;
+    margin-top: 10px;
+}
+.form-input{
+    height: 40px;
+    font-size: 20px;
+}
+.close {
+  color: #f80303bf;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+</style>

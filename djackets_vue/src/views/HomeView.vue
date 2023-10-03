@@ -3,7 +3,7 @@
     <div class="columns">
       <div class="column">
         <h2 class="title">Товары со скидкой!</h2>
-        <section class="hero is-medium " style="height: 840px; overflow-y: scroll;">
+        <section class="hero is-medium " style="height: 540px; overflow-y: scroll;">
 
             <ul class="subtitle m-4">
               
@@ -88,7 +88,7 @@ section {
 
 .is-wider {
   
-    width: 40rem;
+    width: 30rem;
 }
 .small {
   font-size: 0.9rem;

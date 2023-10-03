@@ -4,9 +4,9 @@
     <td>{{ item.product.price }} ₽</td>
     <td>
         {{ item.quantity }}
-        <a @click="decrementQuantity(item)">-</a>
+        <a class="my-a" @click="decrementQuantity(item)">-</a>
     
-        <a @click="incrementQuantity(item)"> +</a>
+        <a class="my-a" @click="incrementQuantity(item)"> +</a>
     </td>
     <td>{{ getItemTotal(item).toFixed(1) }} ₽</td>
     <td><button class="delete" @click="removeFromCart(item)"></button></td>
@@ -54,3 +54,9 @@ export default{
 
 }
 </script>
+<style scoped>
+.my-a {
+    color:brown;
+    font-size: 45px;
+}
+</style>

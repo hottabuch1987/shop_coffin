@@ -11,6 +11,7 @@ import Product from '../views/Product.vue'
 import Document from '../views/Document.vue'
 import Search from '../views/Search.vue'
 import Cart from '../views/Cart.vue'
+import OrderView from '../views/OrderView.vue'
 
 
 
@@ -43,6 +44,11 @@ const routes = [
     path: '/log-in',
     name: 'LogIn',
     component: LogIn
+  },
+  {
+    path: '/order',
+    name: 'OrderView',
+    component: OrderView
   },
   {
     path: '/my-account',
