@@ -28,7 +28,7 @@
 # frontend проекта :
     - Vuex для хранения состояния
     - boolma для вывода сообщений
-===========================================================================================================
+
 ![Image alt](https://github.com/hottabuch1987/shop_coffin/raw/main/img/1.png)
 ![Image alt](https://github.com/hottabuch1987/shop_coffin/raw/main/img/2.png)
 ![Image alt](https://github.com/hottabuch1987/shop_coffin/raw/main/img/3.png)
