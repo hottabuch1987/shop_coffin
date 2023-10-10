@@ -48,7 +48,9 @@
         </ul>
       </div>
     </form>
-    <button @click="loginVK">Войти через ВКонтакте</button>
+    
+   <a :href="authUrl">зайти через VK</a>
+  
 
   </div>
 </div>
@@ -63,7 +65,10 @@ export default {
         return {
             email: '',
             password: '',
-            errors: []
+            errors: [],
+            authUrl: `https://oauth.vk.com/authorize?client_id=${51761062}&scope=email&redirect_uri=http://localhost:8080/api/auth/auth&response_type=code`
+
+           
         }
     },
     mounted() {
@@ -110,32 +115,8 @@ export default {
                     }
                 })    
         },
-        // loginVK() {
-        //   axios.post('/auth/authorize/')
-        //       .then(response => {
-        //         window.location.href = response.data.redirect;
-                
-        //       })
-        //       .catch(error => {
-        //         console.log(error);
-        //       });
-        // }
-        loginVK() {
-            axios.post('/auth/login/', {
-              params: {
-                client_id: '51761062', // Замените на ваш Client ID
-                redirect_uri: 'http://localhost:8080', // Замените на ваш Redirect URI        
-              }
-            })
-            .then(response => {
-              // Обработайте ответ от сервера ВКонтакте
-              console.log(response);
-            })
-            .catch(error => {
-              // Обработайте ошибки
-              console.log(error);
-            });
-          }
+        
+        
 
     }
 

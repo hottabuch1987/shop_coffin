@@ -9,10 +9,11 @@ from rest_framework import schemas
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('auth-vk/', include('social_django.urls', namespace="social")),
-    path('auth/', include('rest_framework_social_oauth2.urls')),
+
     path('api/auth/', include('account.urls')),
     path('api/products/', include('products.urls')),
+    path('auth/', include('social_django.urls', namespace='social')),
+
     
     path('openapi/', schemas.get_schema_view(
         title="Your API",

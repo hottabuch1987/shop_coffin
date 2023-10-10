@@ -35,21 +35,8 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 
 AUTH_USER_MODEL = 'account.User'
-AUTHENTICATION_CLASSES = (
-        'account.models.CustomUserManager',
-        'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
-        'rest_framework_social_oauth2.authentication.SocialAuthentication',
-      
-    )
 
-AUTHENTICATION_BACKENDS = (
-    
-    'social_core.backends.vk.VKOAuth2',
-    'rest_framework_social_oauth2.backends.DjangoOAuth2',
-    'social_core.backends.github.GithubOAuth2',
-    'django.contrib.auth.backends.ModelBackend',
-) #githube
-   
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -67,9 +54,17 @@ INSTALLED_APPS = [
 
     'django_celery_results',
     "django_celery_beat",
+
     "social_django",
+    'social_core',
+
     'oauth2_provider',
     'rest_framework_social_oauth2',
+    
+    'allauth',
+    
+    'allauth.socialaccount',
+
 
     'account.apps.AccountConfig',
     'products.apps.ProductsConfig',
@@ -113,22 +108,22 @@ WSGI_APPLICATION = 'django_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-#
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'HOST': env('DB_HOST'),
-#         'NAME': env('DB_NAME'),
-#         'USER': env('DB_USER'),
-#         'PASSWORD': env('DB_PASS'),
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+#
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'HOST': env('DB_HOST'),
+        'NAME': env('DB_NAME'),
+        'USER': env('DB_USER'),
+        'PASSWORD': env('DB_PASS'),
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -239,3 +234,23 @@ SOCIAL_AUTH_VK_OAUTH2_SCOPE = ['email']
 #         }
 #     }
 # }
+
+AUTHENTICATION_CLASSES = (
+        'account.models.CustomUser',
+        'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
+        'rest_framework_social_oauth2.authentication.SocialAuthentication',
+      
+    )
+
+AUTHENTICATION_BACKENDS = (
+    
+    'social_core.backends.vk.VKOAuth2',
+    'rest_framework_social_oauth2.backends.DjangoOAuth2',
+    'social_core.backends.github.GithubOAuth2',
+
+    'allauth.account.auth_backends.AuthenticationBackend',
+
+    'django.contrib.auth.backends.ModelBackend',
+)
+   
+SITE_ID = 1
