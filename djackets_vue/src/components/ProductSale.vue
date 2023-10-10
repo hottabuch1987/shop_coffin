@@ -6,8 +6,10 @@
       <figure class="image mb-10 animation-effect">
         <img :src="product.get_image">
         {{ product.name }}
-        <p><strong>Цена: {{ product.price }}</strong></p>
+        <p><strong>Цена: {{ product.price }} ₽</strong></p>
+        
       </figure>
+      <router-link v-bind:to="product.get_absolute_url" class="button is-dark mt-4">Посмотреть</router-link>
       
     </div>
   </div>

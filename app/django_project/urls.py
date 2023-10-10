@@ -5,10 +5,16 @@ from django.conf import settings
 from .yasg import urlpatterns as doc_urls
 from rest_framework import schemas
 
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+
     path('api/auth/', include('account.urls')),
     path('api/products/', include('products.urls')),
+    path('auth/', include('social_django.urls', namespace='social')),
+
+    
     path('openapi/', schemas.get_schema_view(
         title="Your API",
         description="API for Your Project",

@@ -1,6 +1,7 @@
 from pathlib import Path
 
 import environ
+
 env = environ.Env()
 environ.Env.read_env()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -21,22 +22,21 @@ ALLOWED_HOSTS = ('*')
 
 #CORS
 CORS_ALLOWED_ORIGINS = [
+    "http://127.0.0.1:8000",
     "http://127.0.0.1:8080",
-    'http://localhost:8080'
+    'http://localhost:8080',
+    
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "http://127.0.0.1:5173",
-    'http://localhost:5173'
+    "http://127.0.0.1:8000",
+    "http://127.0.0.1:8080",
+    'http://localhost:8080'
 ]
 
 AUTH_USER_MODEL = 'account.User'
 
 
-AUTHENTICATION_CLASSES = [
-    'account.models.CustomUserManager',
-    'django.contrib.auth.backends.ModelBackend',
-]
 # Application definition
 
 INSTALLED_APPS = [
@@ -55,6 +55,17 @@ INSTALLED_APPS = [
     'django_celery_results',
     "django_celery_beat",
 
+    "social_django",
+    'social_core',
+
+    'oauth2_provider',
+    'rest_framework_social_oauth2',
+    
+    'allauth',
+    
+    'allauth.socialaccount',
+
+
     'account.apps.AccountConfig',
     'products.apps.ProductsConfig',
 
@@ -69,6 +80,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
+
 ]
 
 ROOT_URLCONF = 'django_project.urls'
@@ -196,6 +209,19 @@ EMAIL_USE_SSL = True
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 
+# social
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
+SOCIAL_AUTH_JSONFIELD_ENABLED = True #githube
+SOCIAL_AUTH_GITHUB_KEY = env('SOCIAL_AUTH_GITHUB_KEY')
+SOCIAL_AUTH_GITHUB_SECRET = env('SOCIAL_AUTH_GITHUB_SECRET')
+
+#vk
+SOCIAL_AUTH_POSTGRES_JSONFIELD = True
+SOCIAL_AUTH_VK_OAUTH2_KEY=env('SOCIAL_AUTH_VK_OAUTH2_KEY')
+SOCIAL_AUTH_VK_OAUTH2_SECRET=env('SOCIAL_AUTH_VK_OAUTH2_SECRET')
+SOCIAL_AUTH_VK_OAUTH2_SCOPE = ['email']
+
+#SOCIAL_AUTH_VK_APP_USER_MODE = 2
 # LOGGING = {
 #     "version": 1,
 #     "handlers": {
@@ -208,3 +234,23 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 #         }
 #     }
 # }
+
+AUTHENTICATION_CLASSES = (
+        'account.models.CustomUser',
+        'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
+        'rest_framework_social_oauth2.authentication.SocialAuthentication',
+      
+    )
+
+AUTHENTICATION_BACKENDS = (
+    
+    'social_core.backends.vk.VKOAuth2',
+    'rest_framework_social_oauth2.backends.DjangoOAuth2',
+    'social_core.backends.github.GithubOAuth2',
+
+    'allauth.account.auth_backends.AuthenticationBackend',
+
+    'django.contrib.auth.backends.ModelBackend',
+)
+   
+SITE_ID = 1

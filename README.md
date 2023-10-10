@@ -15,6 +15,7 @@ docker run -p 127.0.0.1:16379:6379 --name redis-celery -d redis
 ### start celery
 celery -A django_project worker -l info
 
+<<<<<<< HEAD
 ### start vuejs
 ### npm install
 ### npm run serve
@@ -28,6 +29,11 @@ celery -A django_project worker -l info
 # frontend проекта :
     - Vuex для хранения состояния
     - boolma для вывода сообщений
+=======
+![Image alt](https://github.com/hottabuch1987/shop_coffin/raw/document/img/1.png)
+![Image alt](https://github.com/hottabuch1987/shop_coffin/raw/document/img/2.png)
+![Image alt](https://github.com/hottabuch1987/shop_coffin/raw/document/img/3.png)
+>>>>>>> document
 
 
 
@@ -36,9 +42,6 @@ celery -A django_project worker -l info
 
 
 
-![Image alt](https://github.com/hottabuch1987/shop_coffin/raw/main/img/1.png)
-![Image alt](https://github.com/hottabuch1987/shop_coffin/raw/main/img/2.png)
-![Image alt](https://github.com/hottabuch1987/shop_coffin/raw/main/img/3.png)
 
 
 

@@ -44,22 +44,31 @@
             <router-link class="signup__link" to="/sing-up">Регистрация</router-link>
      
           </li>
+         
         </ul>
       </div>
     </form>
+    
+   <a :href="authUrl">зайти через VK</a>
+  
+
   </div>
 </div>
 
 </template>
 <script>
 import axios from 'axios'
+
 export default {
     name:"LogIn",
     data() {
         return {
             email: '',
             password: '',
-            errors: []
+            errors: [],
+            authUrl: `https://oauth.vk.com/authorize?client_id=${51761062}&scope=email&redirect_uri=http://localhost:8080/api/auth/auth&response_type=code`
+
+           
         }
     },
     mounted() {
@@ -79,7 +88,8 @@ export default {
             await axios
                 .post('api/auth/login/', formData)
                 .then(response => {
-                    const auth_code = response.data.auth_token
+                    const auth_code = response.data.auth_token 
+                    // auth_code
 
                     this.$store.commit('setToken', auth_code)
 
@@ -104,8 +114,11 @@ export default {
                     
                     }
                 })    
-        }
-    },
+        },
+        
+        
+
+    }
 
 }
 </script>

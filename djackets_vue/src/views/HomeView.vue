@@ -1,5 +1,5 @@
 <template>
-<div class="home">
+  <div class="page-category">
     <div class="columns">
       <div class="column">
         <h2 class="title">Товары со скидкой!</h2>
@@ -95,6 +95,9 @@ section {
   margin: 2rem;
   list-style-type: disc;
   
+}
+.columns {
+    margin-top: 20px;
 }
 </style>
 

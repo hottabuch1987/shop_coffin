@@ -63,3 +63,22 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
+
+
+class UserDead(models.Model):
+    famyli = models.CharField('Фамилия', max_length=255)
+    name = models.CharField('Имя', max_length=255)
+    surname = models.CharField('Отчество', max_length=255, blank=True, default='')
+
+    class Meta:
+        ordering = ('famyli',)
+        verbose_name = 'Покойник'
+        verbose_name_plural = 'Покойники'
+
+    def __str__(self):
+        return f'Фамилия - {self.famyli}; Имя - {self.name}'
+
+
+# {"famyli":"eded",
+#     "name":"eded",
+#     "surname":"eded"}
