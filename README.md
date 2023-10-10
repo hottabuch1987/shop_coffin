@@ -36,4 +36,9 @@ celery -A django_project worker -l info
 
 
 
+![Image alt](https://github.com/hottabuch1987/shop_coffin/raw/document/img/1.png)
+![Image alt](https://github.com/hottabuch1987/shop_coffin/raw/document/img/2.png)
+![Image alt](https://github.com/hottabuch1987/shop_coffin/raw/document/img/3.png)
+
+
 
